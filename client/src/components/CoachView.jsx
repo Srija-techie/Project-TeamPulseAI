@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useApp } from "../context/AppContext";
+import { API_URL } from "../config";
 import {
   Sparkles,
   Send,
@@ -164,7 +165,7 @@ export default function CoachView() {
         text: msg.text
       }));
 
-      const response = await fetch(`/api/standups/${activeTeam?.id}/coach`, {
+      const response = await fetch(`${API_URL}/api/standups/${activeTeam?.id}/coach`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

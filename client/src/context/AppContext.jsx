@@ -1,7 +1,13 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { io } from "socket.io-client";
+import { API_URL } from "../config";
 
 const AppContext = createContext(undefined);
+
+const fetch = (url, options) => {
+  const targetUrl = typeof url === "string" && url.startsWith("/api") ? `${API_URL}${url}` : url;
+  return window.fetch(targetUrl, options);
+};
 
 export function AppProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -597,7 +603,7 @@ export function AppProvider({ children }) {
   useEffect(() => {
     if (!token || !activeTeam) return;
 
-    const socket = io();
+    const socket = io(API_URL);
 
     socket.on("connect", () => {
       console.log("Socket connected! Joining team room:", activeTeam.id);

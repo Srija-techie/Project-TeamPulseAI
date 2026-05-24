@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useApp } from "../context/AppContext";
+import { API_URL } from "../config";
 import { 
   Activity, 
   HelpCircle, 
@@ -86,7 +87,7 @@ export default function DashboardView() {
     }
     setIsSimulatingJira(true);
     try {
-      const res = await fetch("/api/webhooks/jira", {
+      const res = await fetch(`${API_URL}/api/webhooks/jira`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
