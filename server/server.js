@@ -28,7 +28,7 @@ async function run() {
     httpServer.listen(PORT, "0.0.0.0", () => {
       console.log(`🚀 TeamPulseAI running at http://localhost:${PORT}`);
       console.log(`   Environment : ${process.env.NODE_ENV || "development"}`);
-      console.log(`   MongoDB     : ${process.env.MONGO_URI ? "connected" : "JSON fallback"}`);
+      console.log(`   MongoDB     : ${process.env.MONGO_URL ? "connected" : "JSON fallback"}`);
     });
   } catch (error) {
     console.error("Critical server boot error:", error);

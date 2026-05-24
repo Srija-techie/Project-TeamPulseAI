@@ -8,10 +8,10 @@ export async function connectDB() {
   try {
     const uri = process.env.MONGO_URI;
 
-    console.log("MONGO_URI exists:", !!uri);
+    console.log("MONGO_URL exists:", !!uri);
 
     if (!uri) {
-      throw new Error("MONGO_URI is missing");
+      throw new Error("MONGO_URL is missing");
     }
 
     const conn = await mongoose.connect(uri, {
