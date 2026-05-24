@@ -6,12 +6,11 @@ export async function connectDB() {
   if (isConnected) return;
 
   try {
-    const uri = process.env.MONGO_URI;
-
-    console.log("MONGO_URL exists:", !!uri);
+    const uri = process.env.MONGO_URI || process.env.MONGO_URL;
 
     if (!uri) {
-      throw new Error("MONGO_URL is missing");
+      console.warn("⚠️ MONGO_URI or MONGO_URL is not set. Falling back to local JSON store.");
+      return;
     }
 
     const conn = await mongoose.connect(uri, {
@@ -26,8 +25,7 @@ export async function connectDB() {
   } catch (error) {
     console.error("❌ MongoDB connection failed:");
     console.error(error);
-
-    process.exit(1);
+    console.warn("⚠️ Running in local JSON store mode due to connection failure.");
   }
 }
 

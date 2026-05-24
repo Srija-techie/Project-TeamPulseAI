@@ -1,5 +1,6 @@
 import "dotenv/config";
 import http from "http";
+import mongoose from "mongoose";
 import app from "./app.js";
 import connectDB from "./database/db.js";
 import { initSockets } from "./sockets/index.js";
@@ -28,7 +29,7 @@ async function run() {
     httpServer.listen(PORT, "0.0.0.0", () => {
       console.log(`🚀 TeamPulseAI running at http://localhost:${PORT}`);
       console.log(`   Environment : ${process.env.NODE_ENV || "development"}`);
-      console.log(`   MongoDB     : ${process.env.MONGO_URL ? "connected" : "JSON fallback"}`);
+      console.log(`   MongoDB     : ${mongoose.connection.readyState === 1 ? "connected" : "JSON fallback"}`);
     });
   } catch (error) {
     console.error("Critical server boot error:", error);
