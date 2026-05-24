@@ -1,0 +1,6 @@
+{
+  "name": "TeamPulseAI",
+  "description": "AI-Powered Team Standup, Analytics, and Productivity Platform with Real-time Collaboration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

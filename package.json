@@ -1,0 +1,23 @@
+{
+  "name": "teampulseai",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "cd client && npm run build",
+    "clean": "node -e \"const fs=require('fs');['dist','db-storage'].forEach(d=>{try{fs.rmSync(d,{recursive:true})}catch(e){}});\""
+  },
+  "dependencies": {
+    "@google/genai": "^1.29.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "jspdf": "^4.2.1",
+    "mongoose": "^8.15.0",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^8.0.7",
+    "socket.io": "^4.8.3"
+  }
+}
